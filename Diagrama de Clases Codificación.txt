@@ -1,0 +1,37 @@
+Orden
+    paciente: Paciente
+    n°_afiliado: int
+    fecha: Fecha_Auditoria
+    obra_Social: Clase_Obra_Social
+    analisis: Clase_Analisis
+
+    FUNCIONES
+        Codificar: cada analisis su codigo
+        Mensaje_Fuera_de_Convenio: PAra OS y analisis
+        VERIFICACIÓN_ORDEN
+            Verif_Auditoria: verificar obra social, y otra de la fecha
+            Verif_True/False:
+                Nombre
+                Apellido
+                Nombre_Medico
+                Firma_Medico
+                Sello_Medico
+
+
+
+Análisis:
+    nombre: String
+    codifo(id): int
+
+Paciente
+    nombre: String
+    DNI: int
+
+Obra_Social:
+    nombre:
+    cod:
+    lista:
+
+Fecha_Auditoria:
+    fecha: date
+    FUNCION: Vencimiento_Fecha(no puede ser mayor 30 días del actual)
