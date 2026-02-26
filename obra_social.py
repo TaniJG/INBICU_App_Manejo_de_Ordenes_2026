@@ -12,7 +12,7 @@ class Obra_social:
     def __init__(self,nombre):
         self.nombre = nombre
     def verificar_OS(self):
-        pedido = "SELECT 'OBRA SOCIAL' FROM obras_sociales WHERE `OBRA SOCIAL` = %s"
+        pedido = "SELECT 'OBRA SOCIAL' FROM BD_OS WHERE `OBRA SOCIAL` = %s"
         myCursor.execute(pedido, (self.nombre,))
         nombreOSBD = myCursor.fetchone()
         if nombreOSBD:
@@ -20,7 +20,7 @@ class Obra_social:
         else:
             return False
     def agregar_id(self):
-        pedido = "SELECT 'COD.' FROM obras_sociales WHERE `OBRA SOCIAL` = %s"
+        pedido = "SELECT `COD.` FROM BD_OS WHERE `OBRA SOCIAL` = %s"
         myCursor.execute(pedido, (self.nombre,))
         idOS = myCursor.fetchone()
         if idOS:

@@ -29,7 +29,7 @@ class Orden:
     def verificacion_OS(self):
         self.obraSocial.verificar_OS()
     def verificacion_Fecha(self):
-        validez_fecha = self.fechaAud.Vencimiento_Fecha()
+        return self.fechaAud.Vencimiento_Fecha() 
     def verificacion_datos_presentes(self):
         if (self.paciente.apellido !="") and (self.paciente.nombre !="") and (self.nombreMed !="") and self.firmaMed and self.selloMed:
             return True
@@ -46,6 +46,11 @@ class Orden:
             print("Este análisis no se encuentra cubierto")
         if not(self.verificacion_de_orden()):
             print("Obra Social no esta cubierta") 
+    def aviso_error_orden(self):
+        if not(self.verificacion_Fecha()):
+            print("Orden Vencida")
+        if not(self.verificacion_datos_presentes()):
+            print("Datos Insuficientes") #Expandir para que diga especificamente que falla
         #Estos prints no deben estar presentes en el producto final, representan el mensaje que debe enviarse al usuario
 
 
