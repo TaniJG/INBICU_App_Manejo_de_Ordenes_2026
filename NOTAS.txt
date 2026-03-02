@@ -1,4 +1,3 @@
-¿Deberiamos guardar las ordenes? ¿Donde?
 Crear respuestas de facturación reales
-Preguntar a M como manejar aspectos con interfaz
-Manejo de Git en VS
+
+Al cargar una orden se deberia devolver el id para facilitar busqueda

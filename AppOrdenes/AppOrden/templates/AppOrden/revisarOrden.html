@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Trial</title>
+</head>
+
+<body>
+    {% if lista_ordenes %}
+    <ul>
+        {% for OrdenPaciente in lista_ordenes %}
+        <li><a href="/AppOrdenes/ {{OrdenPaciente.id }}/"></a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Ninguna Orden disponible</p>
+    {% endif %}
+</body>
+
+</html>
