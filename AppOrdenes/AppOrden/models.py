@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class OrdenPaciente(models.Model):
     nombrePaciente = models.CharField("Nombre",max_length=100, null=True)
@@ -7,8 +8,8 @@ class OrdenPaciente(models.Model):
     dniPaciente = models.IntegerField("DNI", null=True)
     numAfiliado = models.IntegerField("N° de Afiliado",null=True)
     fechaOrden = models.DateField("Fecha de la Orden",null=True)
-    nombreAnalisis = models.CharField("Análisis",max_length=200,null=True)
-    codigoAnalisis = models.IntegerField("Codigo del Análisis",null=True)
+    nombreAnalisis = models.JSONField(default=list,null=True)
+    codigoAnalisis = models.JSONField(default=list,null=True)
     nombreObraSocial = models.CharField("Obra Social",max_length=200,null=True)
     codigoObraSocial = models.IntegerField("Código de OS",null=True)
     nombreMedico = models.CharField("Nombre del Médico",max_length=200,null=True)
@@ -18,7 +19,6 @@ class OrdenPaciente(models.Model):
         return self.id
 
 
-#Agregar modelos para NBU y para Obras Sociales
 class ObrasSociales(models.Model):
     obraSocial = models.CharField("Obra Social",max_length=400)
     codigoOS = models.IntegerField("Código de OS")

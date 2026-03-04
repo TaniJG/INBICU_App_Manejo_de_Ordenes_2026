@@ -10,7 +10,7 @@
     {% if lista_ordenes %}
     <ul>
         {% for OrdenPaciente in lista_ordenes %}
-        <li><a href="/AppOrdenes/ {{OrdenPaciente.id }}/"></a></li>
+        <li><a href="/AppOrdenes/{{OrdenPaciente.id}}/">Orden #{{OrdenPaciente.id}} - {{OrdenPaciente.nombrePaciente}} {{OrdenPaciente.apellidoPaciente}}</a></li>
         {% endfor %}
     </ul>
     {% else %}

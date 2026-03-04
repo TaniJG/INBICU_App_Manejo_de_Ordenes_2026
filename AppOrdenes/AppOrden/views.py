@@ -12,7 +12,7 @@ from django.views import generic
     return render(request, "AppOrden/revisarOrden.html",context)"""
 
 class listaOrdenes(generic.ListView):
-    template_name = "AppOrden/revisarOrden.html"
+    template_name = "AppOrden/listaOrdenes.html"
     context_object_name = "lista_ordenes"
     def get_queryset(self):
-        return OrdenPaciente.objects.order_by(id)
+        return OrdenPaciente.objects.order_by(OrdenPaciente.id)
