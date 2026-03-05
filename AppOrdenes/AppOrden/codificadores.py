@@ -13,10 +13,10 @@ def codificar_analisis(nombreAnalisis):
 
 def codificar_OS(nombreOS):
     try:
-        os = ObrasSociales.objects.get(ObrasSociaL=nombreOS)
+        os = ObrasSociales.objects.get(obraSocial = nombreOS)
         codigo = os.codigoOS
-    except Analisis.DoesNotExist:
+    except ObrasSociales.DoesNotExist:
         codigo = 0 #Si se implementean los sinonimos esto deberia modificarse
-    except Analisis.MultipleObjectsReturned:
+    except ObrasSociales.MultipleObjectsReturned:
         codigo = 1 #Avisa que hay multiples Obras Sociales que responden al nombre, no deberia pasar
     return codigo

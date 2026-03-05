@@ -1,5 +1,5 @@
 from .models import OrdenPaciente
-import codificadores
+from . import codificadores
 
 #Utiliza los datos recolctados para crear una orden en la base de datos
 def crear_orden(nomPac,apellidoPac,dniPac,numAfil,fechaO,nomAn,nomOS,nomMed,firmaMed,selloMed):

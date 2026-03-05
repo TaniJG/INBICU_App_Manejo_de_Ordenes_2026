@@ -48,3 +48,9 @@ def verificarAnalisis(codAnalisis): #Este es por variable ya que se repetira den
         return True
     else:
         return False
+
+def verificacionCamposId(orden:OrdenPaciente):
+    if verificacionNombrePac(orden) and verificacionApellidoPac(orden) and verificacionDNIPac(orden) and verificacionNombreMedico(orden) and verificacionFirmaMedico(orden) and verificacionSelloMedico(orden):
+        return True
+    else:
+        return False

@@ -2,7 +2,8 @@ from django.urls import path
 
 from . import views
 
+app_name = "AppOrden"
 urlpatterns = [
     #path("", views.revisarOrden, name="revisarOrden"),
-    path("",views.listaOrdenes.as_view(), name="listaOrdenes")
+    path("",views.ListaOrdenes.as_view(), name="listaOrdenes")
 ]

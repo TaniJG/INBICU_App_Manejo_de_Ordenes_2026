@@ -1,0 +1,1 @@
+#Este codigo tiene como objetivo cargar una orden a la base de datos para realizar pruebas con las views, y asegurarse que funcionen correctamente
