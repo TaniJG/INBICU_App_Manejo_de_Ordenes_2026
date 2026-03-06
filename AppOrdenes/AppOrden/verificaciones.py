@@ -23,6 +23,11 @@ def verificacionDNIPac(orden: OrdenPaciente):
         return True
     else:
         return False
+def verificacionNumAfiliado(orden: OrdenPaciente):
+    if orden.numAfiliado:
+        return True
+    else:
+        return False
 def verificacionNombreMedico(orden: OrdenPaciente):
     if orden.nombreMedico:
         return True

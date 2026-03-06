@@ -4,12 +4,49 @@
 
     <h1>Trial</h1>
     {% block content %}
-    <h2>Ordenes</h2>
-    <ul>
-        {% for orden in object_list %}
-        <li>{{ OrdenPaciente }}</li>
-        {% endfor %}
-    </ul>
+    <h2>Órdenes</h2>
+    <form action="" method="get">
+        <input type="text" name="q" placeholder="ID Orden..." value="{{ request.GET.q|default_if_none:"" }}">
+        <button type="submit">Search</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>N° Afiliado</th>
+                <th>Fecha</th>
+                <th>Análisis</th>
+                <th>Cód. Análisis</th>
+                <th>Obra Social</th>
+                <th>Cód. OS</th>
+                <th>Médico</th>
+                <th>Firma</th>
+                <th>Sello</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden in object_list %}
+            <tr>
+                <td>{{ orden.id }}</td>
+                <td>{{ orden.nombrePaciente }}</td>
+                <td>{{ orden.apellidoPaciente }}</td>
+                <td>{{ orden.dniPaciente }}</td>
+                <td>{{ orden.numAfiliado }}</td>
+                <td>{{ orden.fechaOrden }}</td>
+                <td>{{ orden.nombreAnalisis }}</td>
+                <td>{{ orden.codigoAnalisis }}</td>
+                <td>{{ orden.nombreObraSocial }}</td>
+                <td>{{ orden.codigoObraSocial }}</td>
+                <td>{{ orden.nombreMedico }}</td>
+                <td>{{ orden.firmaMedico|yesno:"Sí,No" }}</td>
+                <td>{{ orden.selloMedico|yesno:"Sí,No" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endblock %}
 
 </body>

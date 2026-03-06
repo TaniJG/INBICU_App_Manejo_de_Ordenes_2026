@@ -25,7 +25,7 @@ class BaseTestCase(TestCase):
     def setUp(self):
         """Load data from CSV files before running tests"""
         # Load Analysis data
-        with open('C:/Users/tanig/OneDrive/Documentos/INBICU-PS/App-Codif/NBU_2012.csv', encoding='utf-8') as ADB:
+        with open('AppOrdenes\AppOrden\NBU_2012.csv', encoding='utf-8') as ADB:
             reader = csv.reader(ADB, delimiter=';')
             for row in reader:
                 if row and row[0] != 'CODIGO' and len(row) >= 2: 
@@ -39,7 +39,7 @@ class BaseTestCase(TestCase):
                     )
         
         # Cargamos datos de obras sociales
-        with open('C:/Users/tanig/OneDrive/Documentos/INBICU-PS/App-Codif/BD_Obras_Sociales.csv', encoding='utf-8') as OSDB:
+        with open('AppOrdenes\AppOrden\BD_Obras_Sociales.csv', encoding='utf-8') as OSDB:
             reader = csv.reader(OSDB, delimiter=';')
             for row in reader:
                 if row and row[0] != 'OBRA SOCIAL' and len(row) >= 2: 

@@ -6,7 +6,7 @@ class OrdenPaciente(models.Model):
     nombrePaciente = models.CharField("Nombre",max_length=100, null=True)
     apellidoPaciente = models.CharField("Apellido",max_length=100,null=True)
     dniPaciente = models.IntegerField("DNI", null=True)
-    numAfiliado = models.IntegerField("N° de Afiliado",null=True)
+    numAfiliado = models.IntegerField("N° de Afiliado",null=True,default=0)
     fechaOrden = models.DateField("Fecha de la Orden",null=True)
     nombreAnalisis = models.JSONField(default=list,null=True)
     codigoAnalisis = models.JSONField(default=list,null=True)
@@ -16,7 +16,7 @@ class OrdenPaciente(models.Model):
     firmaMedico = models.BooleanField("Firma del Médico",null=True)
     selloMedico = models.BooleanField("Sello del Médico",null=True)
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class ObrasSociales(models.Model):
