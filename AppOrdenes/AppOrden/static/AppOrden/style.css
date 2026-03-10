@@ -1,0 +1,47 @@
+/* Table header styles */
+thead th {
+    background-color: blue;
+    color: white;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Alternating row colors for better readability */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+
+/* Estilo para celdas con verificación incompleta */
+td.incomplete {
+    background-color: #ffcccc;
+    color: #cc0000;
+}
+
+/* Button style for links */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}

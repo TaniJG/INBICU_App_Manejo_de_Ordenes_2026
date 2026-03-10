@@ -1,9 +1,9 @@
 from .models import OrdenPaciente
 import datetime
 
-def verificacionFecha(fechaOr):
+def verificacionFecha(orden:OrdenPaciente):
     periodoVencim = 30
-    periodo =  (datetime.datetime.today() - fechaOr)
+    periodo =  (datetime.date.today() - orden.fechaOrden)
     if periodo.days <= periodoVencim:
         return True
     else:
@@ -48,14 +48,31 @@ def verificacionOS(orden: OrdenPaciente):
         return True
     else:
         return False
-def verificarAnalisis(codAnalisis): #Este es por variable ya que se repetira dentro de un for para determinar todas los analisis sin cubrir
+    
+def verificarAnalisisIndiv(codAnalisis): #Este es por variable ya que se repetira dentro de un for para determinar todas los analisis sin cubrir
     if codAnalisis > 1:
         return True
     else:
         return False
 
+def verificionAnalisisCompleto(orden:OrdenPaciente):
+    analisisCorrecto = 0
+    for codAn in orden.codigoAnalisis:
+            if verificarAnalisisIndiv(codAn):
+                analisisCorrecto += 1
+    if (analisisCorrecto == len(orden.codigoAnalisis)):
+        return True
+    else:
+        return False
+
 def verificacionCamposId(orden:OrdenPaciente):
-    if verificacionNombrePac(orden) and verificacionApellidoPac(orden) and verificacionDNIPac(orden) and verificacionNombreMedico(orden) and verificacionFirmaMedico(orden) and verificacionSelloMedico(orden):
+    if verificacionNombrePac(orden) and verificacionApellidoPac(orden) and verificacionDNIPac(orden) and verificacionNumAfiliado(orden) and verificacionNombreMedico(orden) and verificacionFirmaMedico(orden) and verificacionSelloMedico(orden):
+        return True
+    else:
+        return False
+    
+def verificacionTotal(orden:OrdenPaciente):
+    if verificacionCamposId(orden) and verificacionFecha(orden) and verificacionOS(orden) and verificionAnalisisCompleto(orden):
         return True
     else:
         return False

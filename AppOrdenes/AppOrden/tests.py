@@ -15,7 +15,7 @@ django.setup()
 
 from AppOrden.creadorDeOrdenes import crear_orden
 from AppOrden.codificadores import codificar_analisis, codificar_OS
-from AppOrden.verificaciones import verificacionCamposId, verificacionOS, verificarAnalisis
+from AppOrden.verificaciones import verificacionCamposId, verificacionOS, verificionAnalisisCompleto
 from AppOrden.models import Analisis, ObrasSociales, OrdenPaciente
 
 # Create your tests here.
@@ -97,11 +97,7 @@ class TestsOrdenes(BaseTestCase):
     #Todos los analisis deberian estar codificados
     def test_analisis_codificados_correctamente(self):
         ordenCreada = OrdenPaciente.objects.get(id = 1)
-        analisisCorrecto = 0
-        for codAn in ordenCreada.codigoAnalisis:
-            if verificarAnalisis(codAn):
-                analisisCorrecto += 1
-        self.assertEqual(analisisCorrecto,len(ordenCreada.codigoAnalisis))
+        self.assertIs(verificionAnalisisCompleto(ordenCreada),True)
     
     #TEST DE FALLO
 
@@ -115,11 +111,8 @@ class TestsOrdenes(BaseTestCase):
         self.assertIs(verificacionOS(ordenCreada),False)
     def test_analisis_incorrectos_sin_codigo(self):
         ordenCreada = OrdenPaciente.objects.get(id = 2)
-        analisisCorrecto = 0
-        for codAn in ordenCreada.codigoAnalisis:
-            if verificarAnalisis(codAn):
-                analisisCorrecto += 1
-        self.assertNotEqual(analisisCorrecto,len(ordenCreada.codigoAnalisis))
+        self.assertIs(verificionAnalisisCompleto(ordenCreada),False)
+
 
 class TesteoCodificacion(BaseTestCase):
     # setUp is now inherited from BaseTestCase

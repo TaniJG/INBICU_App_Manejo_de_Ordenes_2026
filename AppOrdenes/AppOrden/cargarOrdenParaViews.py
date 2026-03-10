@@ -12,15 +12,15 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AppOrdenesINBICU.settings')
 django.setup()
 from AppOrden.creadorDeOrdenes import crear_orden
 from AppOrden.models import OrdenPaciente
-crear_orden("Juan",
-            "Juan",
+crear_orden("Miguel",
             None,
-            348,
+            45454545,
+            349,
             datetime.datetime.today(),
             ["ACTO BIOQUÍMICO"],
             "POLICIA FEDERAL ",
+            "Victor Apellido",
             None,
-            True,
             True)
 
 

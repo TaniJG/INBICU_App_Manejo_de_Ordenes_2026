@@ -1,14 +1,21 @@
-<html>
+{% load static %}
 
+<html>
+<link rel="stylesheet" href="{% static 'AppOrden/style.css' %}">
 <body>
 
-    <h1>Trial</h1>
+    <h1>Órdenes</h1>
     {% block content %}
-    <h2>Órdenes</h2>
     <form action="" method="get">
         <input type="text" name="q" placeholder="ID Orden..." value="{{ request.GET.q|default_if_none:"" }}">
-        <button type="submit">Search</button>
+        <select name="estado">
+            <option value="">Todas</option>
+            <option value="completa" {% if request.GET.estado == 'completa' %}selected{% endif %}>Completas</option>
+            <option value="incompleta" {% if request.GET.estado == 'incompleta' %}selected{% endif %}>Incompletas</option>
+        </select>
+        <button type="submit">Buscar</button>
     </form>
+    <a href="{% url 'AppOrden:crearOrden' %}" class="button">Crear</a>
     <table border="1">
         <thead>
             <tr>
@@ -25,24 +32,28 @@
                 <th>Médico</th>
                 <th>Firma</th>
                 <th>Sello</th>
+                <th>Estado</th>
+                <th>Modificar</th>
             </tr>
         </thead>
         <tbody>
-            {% for orden in object_list %}
+            {% for orden, estado, verificaciones in ordenes_con_estado %}
             <tr>
                 <td>{{ orden.id }}</td>
-                <td>{{ orden.nombrePaciente }}</td>
-                <td>{{ orden.apellidoPaciente }}</td>
-                <td>{{ orden.dniPaciente }}</td>
-                <td>{{ orden.numAfiliado }}</td>
-                <td>{{ orden.fechaOrden }}</td>
-                <td>{{ orden.nombreAnalisis }}</td>
-                <td>{{ orden.codigoAnalisis }}</td>
-                <td>{{ orden.nombreObraSocial }}</td>
-                <td>{{ orden.codigoObraSocial }}</td>
-                <td>{{ orden.nombreMedico }}</td>
-                <td>{{ orden.firmaMedico|yesno:"Sí,No" }}</td>
-                <td>{{ orden.selloMedico|yesno:"Sí,No" }}</td>
+                <td class="{% if not verificaciones.nombrePaciente %}incomplete{% endif %}">{{ orden.nombrePaciente }}</td>
+                <td class="{% if not verificaciones.apellidoPaciente %}incomplete{% endif %}">{{ orden.apellidoPaciente }}</td>
+                <td class="{% if not verificaciones.dniPaciente %}incomplete{% endif %}">{{ orden.dniPaciente }}</td>
+                <td class="{% if not verificaciones.numAfiliado %}incomplete{% endif %}">{{ orden.numAfiliado }}</td>
+                <td class="{% if not verificaciones.fechaOrden %}incomplete{% endif %}">{{ orden.fechaOrden }}</td>
+                <td class="{% if not verificaciones.codigoAnalisis %}incomplete{% endif %}">{{ orden.nombreAnalisis }}</td>
+                <td class="{% if not verificaciones.codigoAnalisis %}incomplete{% endif %}">{{ orden.codigoAnalisis }}</td>
+                <td class="{% if not verificaciones.codigoObraSocial %}incomplete{% endif %}">{{ orden.nombreObraSocial }}</td>
+                <td class="{% if not verificaciones.codigoObraSocial %}incomplete{% endif %}">{{ orden.codigoObraSocial }}</td>
+                <td class="{% if not verificaciones.nombreMedico %}incomplete{% endif %}">{{ orden.nombreMedico }}</td>
+                <td class="{% if not verificaciones.firmaMedico %}incomplete{% endif %}">{{ orden.firmaMedico|yesno:"Sí,No" }}</td>
+                <td class="{% if not verificaciones.selloMedico %}incomplete{% endif %}">{{ orden.selloMedico|yesno:"Sí,No" }}</td>
+                <td class="{% if not estado %}incomplete{% endif %}">{{ estado|yesno:"Completa,Incompleta" }}</td>
+                <td><a href="{% url 'AppOrden:modificarOrden' orden.id %}" class="button">Modificar</a></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -52,3 +63,4 @@
 </body>
 
 </html>
+
